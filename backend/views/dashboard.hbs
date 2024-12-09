@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dashboard {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            text-align: center;
+        }
+
+        .button a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .button.black {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .button.white {
+            background-color: #fff;
+            color: #333;
+            border: 2px solid #333;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background-color: #555;
+            color: #fff;
+        }
+
+        .button.white:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <h1 class="title">Dashboard</h1>
+        <div class="grid-container">
+            <div id="add-movie" class="button black"><a href="/addMovieRoute">Add Movie</a></div>
+            <div id="update-movie" class="button white"><a href="/updateMovieRoute">Update Movie</a></div>
+            <div id="delete-movie" class="button black"><a href="/deleteMovieRoute">Delete Movie</a></div>
+            <div id="scan-movies" class="button white"><a href="/scanMovieRoute">Scan All Movies</a></div>
+            <div id="add-tv-shows" class="button white"><a href="/addTVShowRoute">Add TV Shows</a></div>
+            <div id="update-tv-shows" class="button black"><a href="/updateTVShowRoute">Update TV Shows</a></div>
+            <div id="delete-tv-shows" class="button white"><a href="/delteTVShowRoute">Delete TV Shows</a></div>
+            <div id="scan-tv-shows" class="button black"><a href="/scanTVShowRoute">Scan All TV Shows</a></div>
+            <div id="server-status" class="button black"><a href="/serverStatusRoute">Server Status</a></div>
+            <div id="restart-server" class="button white"><a href="/restartServerRoute">Restart Server</a></div>
+            <div id="poweroff-server" class="button black"><a href="/powerOffServerRoute">PowerOff Server</a></div>
+            <div id="logout" class="button white"><a href="/admin/logout">Logout</a></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #eef2f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 40%;
+            background-color: #ffffff;
+            padding: 5%;
+            border-radius: 5%;
+            box-shadow: 0 4% 10% rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5%;
+            /* Space below heading */
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin-bottom: 5%;
+            /* Space below heading */
+        }
+
+        h4 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        form input,
+        form button {
+            width: 100%;
+            padding: 2.5%;
+            margin: 2% 0;
+            border: 0.1em solid #ccc;
+            border-radius: 25px;
+            /* Rounded corners */
+            font-size: 1em;
+        }
+
+        form input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5% rgba(0, 123, 255, 0.5);
+        }
+
+        form button {
+            background-color: #000;
+            /* Black background */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 25px;
+            /* Rounded corners */
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #333;
+            /* Slightly lighter black on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {{!-- {{#if errorMessage}}
+        <p class="error-message">{{errorMessage}}</p>
+        {{/if}} --}}
+        <h1>Admin Login</h1>
+        <form action="/admin/login" method="POST">
+            <input type="text" placeholder="Username" id="username" name="username" required>
+            <input type="password" placeholder="Password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <h4><a href="/admin/register">Not an admin? Register here</a></h4>
+    </div>
+    <script>
+        const errorMessage = "{{errorMessage}}";
+        if (errorMessage && errorMessage !== "undefined") {
+            alert(errorMessage);
+        }
+    </script>
+</body>
+
+</html>

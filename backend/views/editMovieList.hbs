@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Update movie</title>
+</head>
+
+<body>
+    <h1>Edit Movie List</h1>
+    <a href="/">Go to Dashboard</a>
+
+    {{#each movies}}
+    <div class="movieDetailsContainer">
+        <div class="posterContainer1">
+            <img src="https://image.tmdb.org/t/p/original{{this.posterPath}}" alt="Movie Poster">
+        </div>
+        <div class="detailsTextContainer">
+            <a href="/movies/{{_id}}">
+                <h2>{{this.title}}</h2>
+            </a>
+            <p style="font-size: 0.8em; margin-bottom:5px">{{this.overview}}</p>
+            <p style="font-size: 0.8em; font-weight: bold;">Release Date: {{this.releaseDate}}</p>
+        </div>
+    </div>
+    {{/each}}
+</body>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.3s;
+    }
+
+    a:hover {
+        border-color: #444;
+    }
+
+    .movieDetailsContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        background: #111;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        width: 80%;
+        max-width: 900px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .posterContainer1 img {
+        width: 150px;
+        height: 275px;
+        border-radius: 5px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .detailsTextContainer {
+        flex: 1;
+        color: #ddd;
+        margin-bottom: 20px;
+    }
+
+    .detailsTextContainer h2 {
+        font-size: 24px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .detailsTextContainer p {
+        margin: 5px 0;
+        line-height: 1.6;
+        color: #aaa;
+    }
+
+    .formContainer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px 10px;
+        background: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        margin-top: 20px;
+    }
+
+    .formContainer label {
+        font-size: 16px;
+        color: #ccc;
+        align-self: center;
+        white-space: nowrap;
+    }
+
+    .formContainer input {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background: #333;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .formContainer input::placeholder {
+        color: #888;
+    }
+
+    .formContainer input:focus {
+        outline: none;
+        border-color: #666;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    }
+
+    .formContainer button {
+        grid-column: span 2;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #444;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .formContainer button:hover {
+        background-color: #666;
+        transform: scale(1.05);
+    }
+</style>
+
+
+</html>

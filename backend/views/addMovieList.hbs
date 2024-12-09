@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            min-height: 100vh;
+            /* Ensure the body takes the full viewport height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+            /* Add spacing between the form and movie list */
+            width: 80%;
+            /* Adjust width to align with movie cards */
+            max-width: 600px;
+            /* Prevent the form from becoming too wide */
+        }
+
+        .search-container input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #222;
+            color: #fff;
+            margin-right: 10px;
+            font-size: 16px;
+            /* Consistent text size */
+        }
+
+        .search-container input[type="text"]::placeholder {
+            color: #aaa;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #444;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #666;
+        }
+
+        .submit-btn:focus,
+        .search-container input:focus {
+            outline: none;
+            border-color: #888;
+            /* Subtle highlight for focus */
+        }
+
+        .movieDetailsContainer {
+            display: flex;
+            align-items: flex-start;
+            background: #111;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .posterContainers img {
+            width: 150px;
+            height: 225px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .detailsTextContainer {
+            flex: 1;
+            color: #ddd;
+        }
+
+        .detailsTextContainer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .detailsTextContainer h2 {
+            font-size: 24px;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .detailsTextContainer p {
+            margin: 5px 0;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .detailsTextContainer p:last-child {
+            color: #888;
+        }
+
+        .detailsTextContainer a:hover h2 {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>List of Movies</h1>
+    <form class="search-container" action="/fetch-movie" method="POST">
+        <input type="text" id="searchTerm" name="searchTerm" placeholder="Movie Name" required>
+        <button class="submit-btn" type="submit">Fetch Details</button>
+    </form>
+
+    {{#each movieList}}
+    <div class="movieDetailsContainer">
+        <div class="posterContainers">
+            <img src="https://image.tmdb.org/t/p/w500/{{this.poster_path}}" alt="Movie Poster">
+        </div>
+        <div class="detailsTextContainer">
+            <a href="/addMovie/{{this.id}}">
+                <h2>
+                    {{this.original_title}}
+                </h2>
+                <p>
+                    {{this.overview}}
+                </p>
+                <p>
+                    {{this.release_date}}
+                </p>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</body>
+
+</html>

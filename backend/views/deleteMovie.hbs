@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 10px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        a:hover {
+            border-color: #444;
+        }
+
+        .movieDetailsContainer {
+            display: flex;
+            align-items: flex-start;
+            background: #111;
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .posterContainer img {
+            width: 150px;
+            height: 225px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .detailsTextContainer {
+            flex: 1;
+            color: #ddd;
+        }
+
+        .detailsTextContainer h2 {
+            font-size: 22px;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .detailsTextContainer p {
+            margin: 5px 0;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .detailsTextContainer p:last-child {
+            color: #888;
+        }
+
+        .delete-btn {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .delete-btn:hover {
+            background-color: #6c6c6c;
+            transform: scale(1.05);
+        }
+
+        .delete-btn:active {
+            background-color: #d84315;
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Delete Movie</h1>
+    <a href="/">Go to Dashboard</a>
+    {{#each movies}}
+    <div class="movieDetailsContainer">
+        <div class="posterContainer">
+            <img src="https://image.tmdb.org/t/p/original/{{this.posterPath}}" alt="Movie Poster">
+        </div>
+        <div class="detailsTextContainer">
+            <h2>{{this.title}}</h2>
+            <p style="font-size: 0.8em; margin-bottom:5px">{{this.overview}}</p>
+            <p style="font-size: 0.8em; font-weight: bold;">Release Date: {{this.releaseDate}}</p>
+            <form action="/delete-movie/{{this._id}}" method="post">
+                <button class="delete-btn" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    {{/each}}
+</body>
+
+</html>

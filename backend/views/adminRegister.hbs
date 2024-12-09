@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Register</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #eef2f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 40%;
+            background-color: #ffffff;
+            padding: 5%;
+            border-radius: 5%;
+            box-shadow: 0 4% 10% rgba(0, 0, 0, 0.1);
+            text-align: center;
+            /* Center heading and form */
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5%;
+            /* Add space below the heading */
+        }
+
+        form {
+            width: 100%;
+        }
+
+        form input,
+        form button {
+            width: 100%;
+            padding: 2.5%;
+            margin: 2% 0;
+            border: 0.1em solid #ccc;
+            border-radius: 25px;
+            /* Rounded corners */
+            font-size: 1em;
+        }
+
+        form input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5% rgba(0, 123, 255, 0.5);
+        }
+
+        form button {
+            background-color: #000;
+            /* Black background */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 25px;
+            /* Rounded corners */
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #333;
+            /* Slightly lighter black on hover */
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin: 1% 0;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 2% 0 1%;
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Admin</h1>
+        {{!-- {{#if errorMessage}}
+        <p class="error-message">{{errorMessage}}</p>
+        {{/if}} --}}
+        <form action="/admin/register" method="POST">
+            <input type="text" placeholder="First name" id="firstName" name="firstName" required>
+            <input type="text" placeholder="Last name" id="lastName" name="lastName" required>
+            <input type="text" placeholder="Age" id="age" name="age" required>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" id="genderMale" name="gender" value="Male" required> Male
+                </label>
+                <label>
+                    <input type="radio" id="genderFemale" name="gender" value="Female"> Female
+                </label>
+                <label>
+                    <input type="radio" id="genderOther" name="gender" value="Other"> Other
+                </label>
+            </div>
+            <input type="email" placeholder="Email" id="email" name="email" required>
+            <input type="text" placeholder="Username" id="username" name="username" required>
+            <input type="password" placeholder="Password" id="password" name="password" required>
+            <input type="password" placeholder="Secret code" id="secretCode" name="secretCode" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        const errorMessage = "{{errorMessage}}";
+        if (errorMessage && errorMessage !== "undefined") {
+            alert(errorMessage);
+        }
+    </script>
+</body>
+
+</html>
